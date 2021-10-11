@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Projects = ({ projects }) => {
-  console.log(projects);
   return (
     <div className={styles.projects}>
       <h2 id="projects" className="pagetitle">
@@ -13,7 +12,7 @@ const Projects = ({ projects }) => {
         {projects.map((project) => (
           <section className={styles.project} key={project.id}>
             <Link href={`/projects/${project.id}`}>
-              <a className={styles.link}>
+              <a className={styles.project__link}>
                 <h3 className={styles.title}>{project.title}</h3>
                 <div className={styles.img}>
                   <Image
@@ -23,9 +22,11 @@ const Projects = ({ projects }) => {
                     height={250}
                   />
                 </div>
-                {/* {tags.forEach((tag) => {
-              <p>{tag}</p>;
-            })} */}
+                <div className={styles.tags}>
+                  {project.roles.split("-").map((tag) => (
+                    <p className={styles.tag}>#{tag}</p>
+                  ))}
+                </div>
               </a>
             </Link>
           </section>

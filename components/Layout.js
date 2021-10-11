@@ -9,7 +9,6 @@ const Layout = ({ children, active }) => {
 
   const toggleNav = () => {
     setNav(!nav);
-    console.log(nav);
   };
 
   return (

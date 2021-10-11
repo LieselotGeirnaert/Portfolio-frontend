@@ -1,0 +1,31 @@
+.project {
+
+  max-width: 25rem;
+}
+
+.project__link {
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  order: 1
+}
+
+.title {
+  font-weight: 700;
+  order: 2;
+  padding: 1rem 0 0;
+}
+
+.tags {
+  display: flex;
+  font-size: .9rem;
+  justify-content: flex-start;
+  order: 3;
+  width: 100%;
+}
+
+.tag {
+  padding-right: 1.5rem;
+}

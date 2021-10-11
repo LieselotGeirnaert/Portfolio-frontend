@@ -1,0 +1,122 @@
+.project {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2rem;
+}
+
+.backlink {
+  position: relative;
+}
+
+.backlink::after {
+   background-image: url(/assets/img/arrow-black.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  content: "";
+  display: block;
+  height: 100%;
+  left: calc(100% + 1rem);
+  position: absolute;
+  top: 0.4rem;
+  width: 2rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  grid-column: 1 / span 3;
+  padding-top: 4rem;
+}
+
+.description {
+  grid-column: 1 / span 3;
+  padding: 2rem 0;
+}
+
+.img1 {
+  grid-column: 1 / span 3;
+}
+
+.subtitle {
+  font-weight: 600;
+  padding: 5rem 0 1rem;
+}
+
+.role {
+  grid-column: 1 / span 1;
+}
+
+.team {
+  grid-column: 2 / span 1;
+}
+
+.checkout {
+  grid-column: 3 / span 1;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  position: relative;
+  width: fit-content;
+}
+
+.link::after {
+  background-image: url(/assets/img/arrow-black.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  content: "";
+  display: block;
+  height: 100%;
+  left: calc(100% + 1rem);
+  position: absolute;
+  top: 0.4rem;
+  width: 2rem;
+}
+
+.link:hover {
+  color: var(--blue);
+}
+
+.link:hover::after {
+  background-image: url(/assets/img/arrow-blue.svg);
+}
+
+@media only screen and (max-width: 800px) {
+ 
+  .project {
+    padding-top: 7rem;
+  }
+
+  .title {
+    padding-top: 2rem;
+  }
+
+  .subtitle {
+    padding: 2rem 0 0.5em;
+  }
+
+  .description {
+    padding: 1rem 0;
+  }
+
+  .img1 {
+    grid-column: 1 / span 3;
+    justify-self: center;
+  }
+
+  .role {
+    grid-column: 1 / span 3;
+  }
+
+  .team {
+    grid-column: 1 / span 3;
+  }
+
+  .checkout {
+    grid-column: 1 / span 3;
+  }
+}
