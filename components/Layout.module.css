@@ -1,31 +1,35 @@
 .body {
   display: grid;
+  font-family: "poppins", BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-size: 1.1rem;
   grid-template-columns: repeat(8, 1fr);
   grid-column-gap: 2rem;
+  line-height: 1.7rem;
   margin: 0 auto;
   max-width: 95rem;
-
 }
 
 .header {
-  font-family: Lora;
   grid-column: 3 / span 4;
   padding: 5rem;
 }
 
 .nav {
   display: flex;
-  font-size: 1.2rem;
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 600;
   justify-content: space-between;
 }
 
-.nav__link, .nav__activelink {
+.nav__link,
+.nav__activelink {
   position: relative;
   width: fit-content;
 }
 
-.nav__link:hover::after, .nav__activelink::after {
+.nav__link:hover::after,
+.nav__activelink::after {
   border-bottom: 2px solid black;
   content: "";
   display: block;
@@ -35,11 +39,10 @@
 }
 
 .main {
-  display: grid;
-  font-family: "poppins";
+  display: flex;
+  flex-direction: column;
+
   grid-column: 2 / span 6;
-  grid-template-columns: repeat(6, 1fr);
-  grid-column-gap: 2rem;
 }
 
 .socials {
@@ -56,18 +59,54 @@
 }
 
 .email {
-  font-weight: bold;
+  font-weight: 600;
   position: fixed;
   transform: rotate(90deg);
+}
 
+.email:hover {
+  color: var(--blue);
 }
 
 .footer {
   grid-column: 1 / span 8;
-  padding: 5rem;
+  padding: 5rem 0 2rem;
 }
 
 .footer__text {
-  font-family: Lora;
   text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .body {
+    max-width: 100%;
+  }
+
+  .header {
+    grid-column: 1 / span 8;
+  }
+
+  .email {
+    display: none;
+  }
+
+  .socials {
+    background-color: var(--white);
+    bottom: 0rem;
+    flex-direction: row;
+    margin: 0 auto;
+    order: 10;
+        position: relative;
+    width: 15rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .body {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    margin: 0 auto;
+    width: 90vw;
+  }
 }

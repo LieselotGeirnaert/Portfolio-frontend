@@ -3,15 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 
-const Layout = ({ children, active }) => {
-  const fetchExperiences = async () => {
-    const req = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/games/?gamecode=${code}`
-    );
-    const res = await req.json();
-    return res[0].id;
-  };
-  
+const Layout = ({ children, active }) => {  
   return (
     <div className={styles.body}>
       <Head>
@@ -21,7 +13,7 @@ const Layout = ({ children, active }) => {
       <header className={styles.header}>
         <h1 className="hidden">Lieselot Geirnaert - Digital Creative</h1>
         <nav className={styles.nav}>
-          <Link href="#about">
+          <Link href="/#about">
             <a
               className={
                 active === "about" ? styles.nav__activelink : styles.nav__link
@@ -30,7 +22,7 @@ const Layout = ({ children, active }) => {
               About
             </a>
           </Link>
-          <Link href="#projects">
+          <Link href="/#projects">
             <a
               className={
                 active === "projects"
@@ -41,7 +33,18 @@ const Layout = ({ children, active }) => {
               Projects
             </a>
           </Link>
-          <Link href="#contact">
+          <Link href="/#experiences">
+            <a
+              className={
+                active === "experiences"
+                  ? styles.nav__activelink
+                  : styles.nav__link
+              }
+            >
+              Experiences
+            </a>
+          </Link>
+          <Link href="/#contact">
             <a
               className={
                 active === "contact" ? styles.nav__activelink : styles.nav__link

@@ -1,11 +1,11 @@
 import styles from "./Contact.module.css";
 import Image from "next/image";
 
-const Project = () => {
+const Contact = () => {
   return (
     <div className={styles.projects}>
       <h2 id="contact" className="pagetitle">
-        Project
+        Contact
       </h2>
     </div>
   );
