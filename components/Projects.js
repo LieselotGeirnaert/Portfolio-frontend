@@ -13,15 +13,15 @@ const Projects = ({ projects }) => {
         {projects.map((project) => (
           <section className={styles.project} key={project.id}>
             <Link href={`/projects/${project.id}`}>
-              <a className={styles.img}>
-                <h3>{project.title}</h3>
-                <div>
-                  {/* <Image
-                src={`/assets/img/${project.Imgages[0]}.png`}
-                alt="Behance"
-                width={25}
-                height={25}
-              /> */}
+              <a className={styles.link}>
+                <h3 className={styles.title}>{project.title}</h3>
+                <div className={styles.img}>
+                  <Image
+                    src={`/assets/img/${project.title}/1.png`}
+                    alt="Behance"
+                    width={400}
+                    height={250}
+                  />
                 </div>
                 {/* {tags.forEach((tag) => {
               <p>{tag}</p>;

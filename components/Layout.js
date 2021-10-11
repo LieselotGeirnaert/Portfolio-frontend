@@ -2,8 +2,16 @@ import styles from "./Layout.module.css";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
-const Layout = ({ children, active }) => {  
+const Layout = ({ children, active }) => {
+  const [nav, setNav] = useState(false);
+
+  const toggleNav = () => {
+    setNav(!nav);
+    console.log(nav);
+  };
+
   return (
     <div className={styles.body}>
       <Head>
@@ -12,12 +20,25 @@ const Layout = ({ children, active }) => {
       </Head>
       <header className={styles.header}>
         <h1 className="hidden">Lieselot Geirnaert - Digital Creative</h1>
-        <nav className={styles.nav}>
+        <div
+          className={styles.hamburger}
+          onClick={() => {
+            toggleNav();
+          }}
+        >
+          <span className={nav ? styles.bar__active : styles.bar}></span>
+          <span className={nav ? styles.bar__active : styles.bar}></span>
+          <span className={nav ? styles.bar__active : styles.bar}></span>
+        </div>
+        <nav className={nav ? styles.nav__active : styles.nav}>
           <Link href="/#about">
             <a
               className={
                 active === "about" ? styles.nav__activelink : styles.nav__link
               }
+              onClick={() => {
+                toggleNav();
+              }}
             >
               About
             </a>
@@ -29,6 +50,9 @@ const Layout = ({ children, active }) => {
                   ? styles.nav__activelink
                   : styles.nav__link
               }
+              onClick={() => {
+                toggleNav();
+              }}
             >
               Projects
             </a>
@@ -40,6 +64,9 @@ const Layout = ({ children, active }) => {
                   ? styles.nav__activelink
                   : styles.nav__link
               }
+              onClick={() => {
+                toggleNav();
+              }}
             >
               Experiences
             </a>
@@ -49,6 +76,9 @@ const Layout = ({ children, active }) => {
               className={
                 active === "contact" ? styles.nav__activelink : styles.nav__link
               }
+              onClick={() => {
+                toggleNav();
+              }}
             >
               Contact
             </a>
@@ -104,10 +134,7 @@ const Layout = ({ children, active }) => {
 
       <div className={styles.email}>
         <Link href="mailto:lieselot.geirnaert@gmail.com">
-          <a>
-            lieselot.geirnaert@gmail.com
-            <span className="hidden">Instagram</span>
-          </a>
+          <a>lieselot.geirnaert@gmail.com</a>
         </Link>
       </div>
 
