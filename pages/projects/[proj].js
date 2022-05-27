@@ -18,7 +18,7 @@ const Project = ({ project }) => {
 
         <div className={styles.images}>
           {project.images.data.map((image) => (
-            <div className={styles.image}>
+            <div className={styles.image} key={image.attributes.url}>
               {image.attributes.mime !== "video/mp4" ? (
                 <Image
                   src={image.attributes.formats.large.url}

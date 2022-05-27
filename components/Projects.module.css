@@ -2,8 +2,9 @@
   display: flex;
   justify-content: space-between;
 }
+
 .project {
-  
+
   margin: 0 2rem 3rem 0;
   max-width: 25rem;
 
@@ -34,4 +35,14 @@
 
 .tag {
   padding-right: 1.5rem;
+}
+
+@media only screen and (max-width: 800px) {
+.projects__container {
+  flex-wrap: wrap;
+}
+
+.project {
+  width: 100%;
+}
 }
