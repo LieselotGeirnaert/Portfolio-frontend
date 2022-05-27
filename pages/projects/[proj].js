@@ -4,6 +4,8 @@ import Link from "next/link";
 import styles from "../../styles/ProjectDetail.module.css";
 
 const Project = ({ project }) => {
+  console.log(project.attributes);
+
   return (
     <Layout>
       <div className={styles.project}>
@@ -14,19 +16,30 @@ const Project = ({ project }) => {
         <p className={styles.description}>{project.description}</p>
         <p className={styles.description}>{project.extradescription}</p>
 
-        <div className={styles.img1}>
-          <Image
-            src={`/assets/img/${project.title}/1.png`}
-            alt="Lieselot"
-            width={200}
-            height={200}
-          />
+        <div className={styles.images}>
+          {project.images.data.map((image) => (
+            <div className={styles.image}>
+              {image.attributes.mime !== "video/mp4" ? (
+                <Image
+                  src={image.attributes.formats.large.url}
+                  alt="Lieselot"
+                  width={image.attributes.formats.large.width}
+                  height={image.attributes.formats.large.height}
+                />
+              ) : (
+                <video width="100%" controls>
+                  <source src={image.attributes.url} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
+            </div>
+          ))}
         </div>
 
         <div className={styles.role}>
           <h3 className={styles.subtitle}>My role during the project</h3>
           <div className={styles.tags}>
-            {project.roles.split("-").map((tag) => (
+            {project.role.split("-").map((tag) => (
               <p className={styles.tag}>{tag}</p>
             ))}
           </div>
@@ -92,8 +105,8 @@ export default Project;
 export const getServerSideProps = async (context) => {
   const { proj } = context.query;
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects/${proj}`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects/${proj}?populate=*`
   );
   let project = await res.json();
-  return { props: { project } };
+  return { props: { project: project.data.attributes } };
 };

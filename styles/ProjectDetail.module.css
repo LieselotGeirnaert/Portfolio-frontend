@@ -33,8 +33,22 @@
   padding: 2rem 0;
 }
 
-.img1 {
+.images {
+  display: flex;
   grid-column: 1 / span 3;
+  flex-wrap: wrap;
+}
+
+.image {
+  width: 100%;
+  margin: 2rem;
+}
+
+.images:first-child {
+  width: 100%;
+}
+
+.img1 {
 }
 
 .subtitle {

@@ -1,5 +1,4 @@
 import styles from "./Experiences.module.css";
-import Image from "next/image";
 
 const Experiences = ({ experiences }) => {
   return (
@@ -10,12 +9,12 @@ const Experiences = ({ experiences }) => {
       <div className={styles.experiences__container}>
         {experiences.map((experience) => (
           <section className={styles.experience} key={experience.id}>
-            <h3 className={styles.experience__title}>{experience.title}</h3>
+            <h3 className={styles.experience__title}>{experience.attributes.title}</h3>
             <p className={styles.experience__description}>
-              {experience.description}
+              {experience.attributes.description}
             </p>
             <p className={styles.experience__date}>
-              {experience.start} {experience.end ? `- ${experience.end}` : ""}
+              {experience.attributes.period}
             </p>
           </section>
         ))}

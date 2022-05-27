@@ -6,6 +6,7 @@ import Projects from "../components/Projects";
 import Contact from "../components/Contact";
 
 export default function Home({ experiences, projects }) {
+  console.log(experiences);
   return (
     <Layout>
       <About />
@@ -18,16 +19,16 @@ export default function Home({ experiences, projects }) {
 
 export async function getStaticProps() {
   const reqExperiences = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/experiences?_sort=id:DESC`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/experiences?sort[0]=id%3Adesc`
   );
   const experiences = await reqExperiences.json();
 
   const reqProjects = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?_sort=id:DESC`
+    `${process.env.NEXT_PUBLIC_STRAPI_URL}/projects?populate=*`
   );
   const projects = await reqProjects.json();
 
   return {
-    props: { experiences, projects },
+    props: { experiences: experiences.data, projects: projects.data },
   };
 }
